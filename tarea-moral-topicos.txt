@@ -1,0 +1,7 @@
+tarea moral
+1.  cree dos usuarios NO DBA en la base de datos default.
+2.  cree dos tablas (pueden ser basadas en datos ya existentes)
+3.  cree dos roles
+4. asígneles diferentes permisos a los roles sobre las tablas.
+5.  asigne a los usuarios a los distintos roles
+6.  verifique qué operaciones se permiten y qué operaciones NO se permiten.
