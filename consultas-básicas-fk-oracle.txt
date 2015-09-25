@@ -1,0 +1,28 @@
+select
+e.EMPLOYEE_ID, e.DEPARTMENT_ID, d.DEPARTMENT_NAME, e.manager_id
+from employees e
+, departments d
+where e.department_id = d.department_id
+order by department_name;
+
+select
+  e.DEPARTMENT_ID, d.DEPARTMENT_NAME, 
+  count (e.EMPLOYEE_ID) employee_qty
+from employees e
+  , departments d
+where e.department_id = d.department_id
+  GROUP BY e.DEPARTMENT_ID, d.DEPARTMENT_NAME
+order by department_name;
+
+select
+  e.EMPLOYEE_ID, d.DEPARTMENT_NAME, 
+  e.first_name || ' ' || e.last_name employee_full_name,
+  NVL (m.first_name, e.first_name) || ' ' || 
+      nvl (m.last_name, e.last_name) manager_full_name
+from employees e
+, departments d
+, employees m 
+where 
+e.department_id = d.department_id
+and e.manager_id = m.employee_id(+)
+order by e.employee_id;
