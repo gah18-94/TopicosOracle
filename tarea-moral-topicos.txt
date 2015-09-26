@@ -5,3 +5,4 @@ tarea moral
 4. asígneles diferentes permisos a los roles sobre las tablas.
 5.  asigne a los usuarios a los distintos roles
 6.  verifique qué operaciones se permiten y qué operaciones NO se permiten.
+7.  repase todo lo anterior.
