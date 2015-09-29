@@ -6,3 +6,4 @@ tarea moral
 5.  asigne a los usuarios a los distintos roles
 6.  verifique qué operaciones se permiten y qué operaciones NO se permiten.
 7.  repase todo lo anterior.
+8.  por su bien, espero que lo cumplan.
