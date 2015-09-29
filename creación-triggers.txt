@@ -1,0 +1,16 @@
+CREATE OR REPLACE TRIGGER TRG_UPD_SALARY_LESTHAN_TEN_PRC 
+BEFORE UPDATE OF SALARY ON EMPLOYEES 
+REFERENCING OLD AS VIEJO NEW AS NUEVO 
+FOR EACH ROW 
+DECLARE
+  v_porcentaje_cambio number (10,3);
+BEGIN
+  -- determine el porcentaje en que cambio el salario
+  v_porcentaje_cambio:= :viejo.salary / :nuevo.salary * 100;
+  -- en caso de que el porcentaje sea excesivo
+  if -10 >= v_porcentaje_cambio OR v_porcentaje_cambio >= 10 THEN
+    raise_application_error (-20001, 'El porcentaje de cambio (' + 
+          TO_CHAR(v_porcentaje_cambio) + ' es excesivo.  ' +
+          'No le da verguenza?');
+  end if;
+END;
