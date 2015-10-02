@@ -1,0 +1,25 @@
+select * from v_my_employees
+where lower (FULL_MANAGER_NAME) like '%king%';
+
+-- nombres de los jefes
+select distinct FULL_MANAGER_NAME from v_my_employees;
+
+
+-- cantidad de empleados por jefe
+select 
+FULL_MANAGER_NAME 
+, count (*) subordinates
+, nvl (max (v.commission_pct), 0) max_comm_pct
+, FLOOR (avg (v.salary), 2) salary_avg
+, ROUND (min (v.salary), 2) salary_min
+from v_my_employees v
+group by FULL_MANAGER_NAME;
+
+select 
+v.DEPARTMENT_NAME, 
+count (*) employees_qty
+, ROUND (avg (v.salary), 2) salary_avg
+, CEIL (avg (v.salary)) salary_avg_ceil
+, ROUND (min (v.salary), 2) salary_min
+from v_my_employees v
+group by v.DEPARTMENT_NAME;
