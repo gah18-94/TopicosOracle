@@ -1,0 +1,21 @@
+nombre			ip
+josé daniel		10.23.4.9	xyz3
+marlon			10.23.4.23	xyz2
+gustavo			10.23.4.15	xyz1
+héctor			10.23.4.10	xyz4
+
+dblink		10.23.4.XXX/orcl
+credenciales topicos/oracle
+
+  CREATE PUBLIC DATABASE LINK "BDGUSTAVO"
+   CONNECT TO "TOPICOS" IDENTIFIED BY oracle
+   USING '10.23.4.15/orcl';
+   
+   select * from hr.employees@bdgustavo;
+
+
+--create table xyz4@bdgustavo as select * from cat;
+exec dbms_utility.exec_ddl_statement@bdgustavo(
+'create table xyzgustavo1234 as select 23 as hello from cat');
+
+select * from xyz4;
