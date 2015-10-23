@@ -1,0 +1,4 @@
+Haga una función que reciba una cantidad de años y devuelva la concatenación de todas las direcciones de correo de los empleados que tienen más de esa cantidad de años de antigüedad.
+
+Tarea moral:
+Haga una función que reciba un número de mes del año y que devuelva los nombres de los empleados, separados por coma, que fueron contratados en ese mes.

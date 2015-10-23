@@ -1,0 +1,24 @@
+create or replace function emails_por_antiguedad 
+(
+  p_antiguedad in number 
+, p_dominio_empresa in varchar2 
+) return varchar2 as 
+  -- cursor a recorrer para obtener los emails
+  CURSOR c_emails_antiguedad (p_c_emails_antig IN VARCHAR) IS
+    select 
+      email from employees 
+    where 
+      months_between(sysdate, hire_date) / 12 >= p_c_emails_antig;
+  v_emails varchar (1000);
+begin
+  -- inicialice el resultado
+  v_emails:= '';
+  -- abra el cursor y proceselo
+  for v_cursor_emails IN c_emails_antiguedad (p_antiguedad) LOOP
+    -- concatene al resultado final el email actualmente procesado
+    v_emails:= v_emails || lower(v_cursor_emails.email) || 
+               '@' || p_dominio_empresa || '; ';
+  end loop;
+  
+  return v_emails;
+end emails_por_antiguedad;
